@@ -1,7 +1,5 @@
 pipeline {
-  agent any
-    
-  tools {MAVEN "node"}
+  agent  {MAVEN}
     
   stages {
         
