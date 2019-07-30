@@ -1,0 +1,12 @@
+pipeline {
+    agent any
+    stage('One') {
+        steps {
+            node('MAVEN'){
+               git 'https://github.com/asquarezone/game-of-life.git'
+               sh label: '', script: '''mvn clean package'''
+               junit 'gameoflife-web/target/surefire-reports/*.xml'
+            }
+	}
+}
+}
