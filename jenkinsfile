@@ -2,7 +2,7 @@ pipeline {
   agent any
     
   stages {
-     node('MAVEN'){   
+  node('MAVEN'){   
     stage('Cloning Git') {
       steps {
         git 'https://github.com/asquarezone/game-of-life.git'
