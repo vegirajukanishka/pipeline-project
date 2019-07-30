@@ -1,8 +1,8 @@
 pipeline {
-  agent any
-node('MAVEN'){
-stage('SCM'){
-    git 'https://github.com/asquarezone/game-of-life.git'
+  agent any    
+stages {    
+stage('Cloning Git'){ 
+    git  'https://github.com/asquarezone/game-of-life.git'
 }
 stage('package'){
     sh label:'',script:''' mvn clean package '''
