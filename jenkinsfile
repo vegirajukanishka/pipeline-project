@@ -1,26 +1,14 @@
 pipeline {
-  agent any
-    
-  stages {
-  node('MAVEN'){   
-    stage('Cloning Git') {
-      steps {
-        git 'https://github.com/asquarezone/game-of-life.git'
-      }
+    agent any
+    stages {   
+        stage('Cloning Git') {
+            steps {
+            node ('MAVEN') {
+                git 'https://github.com/asquarezone/game-of-life.git'
+                sh label:'',script:''' mvn clean package '''
+                junit 'gameoflife-web/target/surefire-reports/*.xml' 
+            }
+        }     
     }
-        
-    stage('packaging') {
-      steps {
-        sh label:'',script:''' mvn clean package '''
-      }
     }
-     
-    stage('Test') {
-      steps {
-        junit 'gameoflife-web/target/surefire-reports/*.xml' 
-      }
-    }      
-  
-}
-}
 }
