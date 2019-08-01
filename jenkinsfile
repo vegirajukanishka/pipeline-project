@@ -4,7 +4,7 @@ pipeline {
         stage('deploying') {
             steps {
             node ('ACS') {
-                sh label: '', script: 'ansible-playbook -i /home/ansible/playbooks/hosts playbook.yml' 
+                sh label: '', script: 'ansible-playbook -i /home/ansible/playbooks/hosts /home/ansible/playbooks/playbook.yml' 
             }
         }     
     }
