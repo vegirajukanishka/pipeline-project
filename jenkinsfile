@@ -3,8 +3,8 @@ pipeline {
     stages {   
         stage('deploying') {
             steps {
-            node ('TOMCAT') {
-                sh label: '', script: 'sudo wget -P /opt/tomcat/webapps http://52.36.95.234:8081/artifactory/kanishka/com/wakaleo/gameoflife/gameoflife-web/1.0-SNAPSHOT/gameoflife-web-1.0-20190731.073641-1.war' 
+            node ('ACS') {
+                sh label: '', script: 'ansible-playbook -i /home/ansible/playbooks/hosts /home/ansible/playbooks/playbook.yml' 
             }
         }     
     }
